@@ -21,4 +21,7 @@
   <ItemGroup>
     <EmbeddedResource Include="ape.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
+  </ItemGroup>
 </Project>

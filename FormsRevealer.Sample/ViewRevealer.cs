@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.IO;
-using System.Reflection;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
@@ -35,8 +34,24 @@ namespace FormsRevealer.Sample
             nameof(ChildView),
             typeof(View),
             typeof(ViewRevealer),
-            new Label() { Text = "Set some content :D", VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center }
+            new Label() { Text = "Set some content :D", VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center },
+            propertyChanged: OnChildViewChanged
             );
+
+        private static void OnChildViewChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            if(bindable is ViewRevealer revealer)
+            {
+                //revealer.HorizontalOptions = revealer.ChildView.HorizontalOptions;
+                //revealer.VerticalOptions = revealer.ChildView.VerticalOptions;
+
+                revealer.WidthRequest = revealer.ChildView.WidthRequest;
+                revealer.HeightRequest = revealer.ChildView.HeightRequest;
+
+                revealer.MinimumWidthRequest = revealer.ChildView.MinimumWidthRequest;
+                revealer.MinimumHeightRequest = revealer.ChildView.MinimumHeightRequest;
+            }
+        }
 
         public View ChildView
         {
@@ -63,6 +78,8 @@ namespace FormsRevealer.Sample
 
         public void StartRevealAnimation()
         {
+            ChildView.Opacity = 0.0;
+
             _childViewImage = _childViewImage ?? GetChildViewImage();
             _rootLayout.Children.Add(_canvasView);
 

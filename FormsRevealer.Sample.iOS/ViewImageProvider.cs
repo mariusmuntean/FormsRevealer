@@ -12,8 +12,7 @@ namespace FormsRevealer.Sample.iOS
     {
         public byte[] GetViewImage(View formsView)
         {
-            var view = Platform.CreateRenderer(formsView).NativeView;
-
+            var view = Platform.GetRenderer(formsView).NativeView;
 
 
             var renderer = new UIGraphicsImageRenderer(view.Bounds.Size);
