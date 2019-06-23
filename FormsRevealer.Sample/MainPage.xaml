@@ -9,22 +9,25 @@
     x:Class      = "FormsRevealer.Sample.MainPage">
     <Grid
         BackgroundColor = "Purple">
-        <local:RevealMe
-            VerticalOptions = "Center">
-        </local:RevealMe>
         <!-- revealer -->
         <local:ViewRevealer
-            x:Name="Revealer"
-            BackgroundColor = "Transparent"
-            HorizontalOptions="Center"
-            VerticalOptions = "Start"
-            WidthRequest="180"
-            HeightRequest="130">
+            x:Name            = "Revealer"
+            BackgroundColor   = "Transparent"
+            HorizontalOptions = "Center"
+            VerticalOptions   = "Start"
+            WidthRequest      = "180"
+            HeightRequest     = "180">
+            <local:ViewRevealer.ChildView>
+                <local:RevealMe
+                    VerticalOptions = "Center">
+                </local:RevealMe>
+            </local:ViewRevealer.ChildView>
         </local:ViewRevealer>
-        
-        <Button VerticalOptions="End"
-                HorizontalOptions="Center"
-                Text="Reveal"
-                Clicked="Handle_Clicked"></Button>
+        <Button
+            VerticalOptions   = "End"
+            HorizontalOptions = "Center"
+            Text              = "Reveal"
+            Clicked           = "Handle_Clicked">
+        </Button>
     </Grid>
 </ContentPage>

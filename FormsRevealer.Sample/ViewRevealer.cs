@@ -11,8 +11,9 @@ namespace FormsRevealer.Sample
     [DesignTimeVisible(true)]
     public class ViewRevealer : ContentView
     {
+        Grid _rootLayout;
         SKBitmap _childViewImage;
-        SKCanvasView _canvas;
+        SKCanvasView _canvasView;
         private float _revealProgress;
 
         public ViewRevealer()
@@ -32,14 +33,14 @@ namespace FormsRevealer.Sample
 
         public static readonly BindableProperty ChildViewProperty = BindableProperty.Create(
             nameof(ChildView),
-            typeof(VisualElement),
+            typeof(View),
             typeof(ViewRevealer),
-            new Label() { Text = "Set some content :D" }
+            new Label() { Text = "Set some content :D", VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center }
             );
 
-        public VisualElement ChildView
+        public View ChildView
         {
-            get => (VisualElement)GetValue(ChildViewProperty);
+            get => (View)GetValue(ChildViewProperty);
             set => SetValue(ChildViewProperty, value);
         }
 
@@ -47,29 +48,37 @@ namespace FormsRevealer.Sample
         {
             base.OnParentSet();
 
-            _canvas = new SKCanvasView();
-            _canvas.PaintSurface += Paint;
+            _canvasView = new SKCanvasView();
+            _canvasView.PaintSurface += Paint;
 
-            _childViewImage = GetChildViewImage();
-            Content = _canvas;
+            _rootLayout = new Grid();
 
-            StartRevealAnimation();
+            ChildView.Opacity = 0.0;
+            _rootLayout.Children.Add(ChildView);
+
+            Content = _rootLayout;
+
+            //StartRevealAnimation();
         }
 
         public void StartRevealAnimation()
         {
+            _childViewImage = _childViewImage ?? GetChildViewImage();
+            _rootLayout.Children.Add(_canvasView);
+
             var revealAnimation = new Animation(
                 interpolatedValue =>
                 {
                     _revealProgress = (float)interpolatedValue;
-                    _canvas.InvalidateSurface();
+                    _canvasView.InvalidateSurface();
                 },
-                easing: Easing.CubicOut
+                easing: Easing.CubicInOut
                 );
 
-            revealAnimation.Commit(this, "RevealAnimation", length: 1200, finished: (d, b) =>
+            revealAnimation.Commit(this, "RevealAnimation", length: 900, finished: (d, b) =>
             {
-
+                ChildView.Opacity = 1.0;
+                _rootLayout.Children.Remove(_canvasView);
             });
         }
 
@@ -93,16 +102,21 @@ namespace FormsRevealer.Sample
 
         private SKBitmap GetChildViewImage()
         {
-            string resourceID = "FormsRevealer.Sample.ape.jpg";
-            Assembly assembly = GetType().GetTypeInfo().Assembly;
 
-            SKBitmap resourceBitmap;
-            using (Stream stream = assembly.GetManifestResourceStream(resourceID))
-            {
-                resourceBitmap = SKBitmap.Decode(stream);
-            }
+            var r = DependencyService.Get<IViewImageProvider>(DependencyFetchTarget.GlobalInstance).GetViewImage(ChildView);
+            SKCodec codec = SKCodec.Create(new MemoryStream(r));
+            return SKBitmap.Decode(codec);
 
-            return resourceBitmap;
+            //string resourceID = "FormsRevealer.Sample.ape.jpg";
+            //Assembly assembly = GetType().GetTypeInfo().Assembly;
+
+            //SKBitmap resourceBitmap;
+            //using (Stream stream = assembly.GetManifestResourceStream(resourceID))
+            //{
+            //    resourceBitmap = SKBitmap.Decode(stream);
+            //}
+
+            //return resourceBitmap;
         }
 
     }
