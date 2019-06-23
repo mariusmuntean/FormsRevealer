@@ -1,35 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage
-    xmlns       = "http://xamarin.com/schemas/2014/forms"
-    xmlns:x      = "http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d      = "http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc     = "http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local  = "clr-namespace:FormsRevealer.Sample;assembly=FormsRevealer.Sample"
-    xmlns:views  = "clr-namespace:FormsRevealer.Sample.Views;assembly=FormsRevealer.Sample"
-    mc:Ignorable = "d"
-    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
-    ios:Page.UseSafeArea="true"
-    x:Class      = "FormsRevealer.Sample.MainPage">
+    xmlns               = "http://xamarin.com/schemas/2014/forms"
+    xmlns:x              = "http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d              = "http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc             = "http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local          = "clr-namespace:FormsRevealer.Sample;assembly=FormsRevealer.Sample"
+    xmlns:views          = "clr-namespace:FormsRevealer.Sample.Views;assembly=FormsRevealer.Sample"
+    mc:Ignorable         = "d"
+    xmlns:ios            = "clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea = "true"
+    x:Class              = "FormsRevealer.Sample.MainPage">
     <Grid
-        BackgroundColor = "#FFEEEEEE" Padding="10">
+        Margin          = "10"
+        BackgroundColor = "#FFEEEEEE"
+        Padding         = "10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition
+                Height = "*" />
+            <RowDefinition
+                Height = "Auto" />
         </Grid.RowDefinitions>
         <!-- revealer -->
         <local:ViewRevealer
             x:Name            = "Revealer"
-            BackgroundColor   = "White"
+            BackgroundColor   = "#FFDDDDDD"
             HorizontalOptions = "Fill"
             VerticalOptions   = "Center">
             <local:ViewRevealer.ChildView>
-                <local:RevealMe
+                <views:LoginView
                     VerticalOptions = "Fill">
-                </local:RevealMe>
+                </views:LoginView>
             </local:ViewRevealer.ChildView>
         </local:ViewRevealer>
         <Button
-            Grid.Row="1"
+            Grid.Row          = "1"
             VerticalOptions   = "End"
             HorizontalOptions = "Center"
             Text              = "Reveal"

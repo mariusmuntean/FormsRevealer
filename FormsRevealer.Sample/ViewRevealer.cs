@@ -80,7 +80,8 @@ namespace FormsRevealer.Sample
         {
             ChildView.Opacity = 0.0;
 
-            _childViewImage = _childViewImage ?? GetChildViewImage();
+            //_childViewImage = _childViewImage ?? GetChildViewImage();
+            _childViewImage = GetChildViewImage();
             _rootLayout.Children.Add(_canvasView);
 
             var revealAnimation = new Animation(

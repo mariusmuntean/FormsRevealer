@@ -16,9 +16,11 @@ namespace FormsRevealer.Sample.iOS
 
 
             var renderer = new UIGraphicsImageRenderer(view.Bounds.Size);
-            var jpgData = renderer.CreateJpeg(0.5f, ctx =>
+            var jpgData = renderer.CreatePng(ctx =>
             {
-                Console.WriteLine(ctx);
+                view.Alpha = 1.0f;
+                view.Layer.RenderInContext(ctx.CGContext);
+                view.Alpha = 0.0f;
             });
             var bytes = new byte[jpgData.Length];
             System.Runtime.InteropServices.Marshal.Copy(jpgData.Bytes, bytes, 0, Convert.ToInt32(jpgData.Length));
@@ -27,15 +29,20 @@ namespace FormsRevealer.Sample.iOS
 
 
             //UIGraphics.BeginImageContextWithOptions(view.Bounds.Size, true, 0);
+            //view.Alpha = 1.0f;
             //view.Layer.RenderInContext(UIGraphics.GetCurrentContext());
+            //view.Alpha = 0.0f;
             //var img = UIGraphics.GetImageFromCurrentImageContext();
             //UIGraphics.EndImageContext();
             //var imgData = img;
+
 
             //UIGraphics.BeginImageContextWithOptions(view.Bounds.Size, view.Opaque, 1);
             //view.DrawViewHierarchy(view.Frame, false); //this was key line
             //UIImage imgData = UIGraphics.GetImageFromCurrentImageContext();
             //UIGraphics.EndImageContext();
+
+
 
             //var jpgData = imgData.AsJPEG();
             //var bytes = new byte[jpgData.Length];

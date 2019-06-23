@@ -17,14 +17,14 @@ namespace FormsRevealer.Sample.Droid
 
             Bitmap bitmap = Bitmap.CreateBitmap(view.Width, view.Height, Bitmap.Config.Argb8888);
             Canvas canvas = new Canvas(bitmap);
-            canvas.DrawColor(Android.Graphics.Color.White);
+            canvas.DrawColor(Android.Graphics.Color.Transparent);
             view.Draw(canvas);
 
             byte[] imageBytes;
 
             using (var stream = new MemoryStream())
             {
-                bitmap.Compress(Bitmap.CompressFormat.Jpeg, 50, stream);
+                bitmap.Compress(Bitmap.CompressFormat.Png, 50, stream);
                 imageBytes = stream.ToArray();
             }
 
