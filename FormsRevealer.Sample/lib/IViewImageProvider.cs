@@ -1,7 +1,6 @@
-﻿using System.IO;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
-namespace FormsRevealer.Sample
+namespace FormsRevealer.Sample.lib
 {
     public interface IViewImageProvider
     {

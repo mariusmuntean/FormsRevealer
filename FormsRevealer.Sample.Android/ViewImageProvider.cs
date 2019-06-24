@@ -2,6 +2,7 @@
 using System.IO;
 using Android.Graphics;
 using FormsRevealer.Sample.Droid;
+using FormsRevealer.Sample.lib;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 

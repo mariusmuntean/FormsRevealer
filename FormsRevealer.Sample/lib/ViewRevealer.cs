@@ -5,7 +5,7 @@ using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
 
-namespace FormsRevealer.Sample
+namespace FormsRevealer.Sample.lib
 {
     [DesignTimeVisible(true)]
     public class ViewRevealer : ContentView
@@ -31,6 +31,9 @@ namespace FormsRevealer.Sample
 
             this.BackgroundColor = Color.Transparent;
             _state = RevealState.Hidden;
+
+
+            //ToDo: make input transparent while NOT Revealed
         }
 
         public static readonly BindableProperty ChildViewProperty = BindableProperty.Create(

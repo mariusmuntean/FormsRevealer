@@ -1,27 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DebugType>pdbonly</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.0.0.497661" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
-    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="ape.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="ape.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\" />
-  </ItemGroup>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DebugType>pdbonly</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Xamarin.Forms" Version="4.0.0.497661" />
+        <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
+        <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.0" />
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Views\" />
+        <Folder Include="Pages\" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\MainPage.xaml.cs">
+            <DependentUpon>LoginRegisterReveal.xaml</DependentUpon>
+            <SubType>Code</SubType>
+        </Compile>
+        <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\HomePage.xaml.cs">
+            <DependentUpon>HomePage.xaml</DependentUpon>
+            <SubType>Code</SubType>
+        </Compile>
+        <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\LoginRegisterReveal.xaml.cs">
+            <DependentUpon>LoginRegisterReveal.xaml</DependentUpon>
+            <SubType>Code</SubType>
+        </Compile>
+    </ItemGroup>
 </Project>

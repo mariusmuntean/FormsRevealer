@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using FormsRevealer.Sample.iOS;
+using FormsRevealer.Sample.lib;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;

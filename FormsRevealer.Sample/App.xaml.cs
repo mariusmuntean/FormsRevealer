@@ -1,6 +1,5 @@
-﻿using System;
+﻿using FormsRevealer.Sample.Pages;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace FormsRevealer.Sample
 {
@@ -10,7 +9,7 @@ namespace FormsRevealer.Sample
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new HomePage());
         }
 
         protected override void OnStart()

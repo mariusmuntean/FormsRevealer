@@ -8,74 +8,70 @@
     xmlns:views          = "clr-namespace:FormsRevealer.Sample.Views;assembly=FormsRevealer.Sample"
     mc:Ignorable         = "d"
     xmlns:ios            = "clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:lib            = "clr-namespace:FormsRevealer.Sample.lib;assembly=FormsRevealer.Sample"
     ios:Page.UseSafeArea = "true"
-    x:Class              = "FormsRevealer.Sample.MainPage">
+    Title                = "Login Register"
+    x:Class              = "FormsRevealer.Sample.Pages.LoginRegisterReveal">
     <Grid
-        Margin          = "10"
-        BackgroundColor = "#FFEEEEEE"
-        Padding         = "10">
+        Margin  = "10"
+        Padding = "10">
         <Grid.RowDefinitions>
             <RowDefinition
                 Height = "*" />
             <RowDefinition
-                Height = "90" />
+                Height = "100" />
         </Grid.RowDefinitions>
         <!-- revealers -->
         <!-- login -->
-        <local:ViewRevealer
+        <lib:ViewRevealer
             x:Name            = "LoginRevealer"
             HorizontalOptions = "Fill"
             VerticalOptions   = "Center">
-            <local:ViewRevealer.ChildView>
+            <lib:ViewRevealer.ChildView>
                 <views:LoginView
                     VerticalOptions = "Fill">
                 </views:LoginView>
-            </local:ViewRevealer.ChildView>
-        </local:ViewRevealer>
+            </lib:ViewRevealer.ChildView>
+        </lib:ViewRevealer>
         <!-- register -->
-        <local:ViewRevealer
+        <lib:ViewRevealer
             x:Name            = "RegisterRevealer"
             HorizontalOptions = "Fill"
             VerticalOptions   = "Center">
-            <local:ViewRevealer.ChildView>
+            <lib:ViewRevealer.ChildView>
                 <views:RegisterView
                     VerticalOptions = "Fill">
                 </views:RegisterView>
-            </local:ViewRevealer.ChildView>
-        </local:ViewRevealer>
+            </lib:ViewRevealer.ChildView>
+        </lib:ViewRevealer>
         <FlexLayout
-            BackgroundColor   = "Transparent"
-            AlignContent      = "End"
+            AlignContent      = "Center"
             Grid.Row          = "1"
-            Direction         = "Row"
+            Direction         = "Column"
             AlignItems        = "Center"
             Wrap              = "Wrap"
-            VerticalOptions   = "End"
-            JustifyContent    = "SpaceBetween"
-            HorizontalOptions = "Center">
+            VerticalOptions   = "CenterAndExpand"
+            JustifyContent    = "SpaceEvenly"
+            HorizontalOptions = "CenterAndExpand">
             <Button
-                VerticalOptions   = "End"
-                HorizontalOptions = "Center"
-                Text              = "Reveal Login"
-                Clicked           = "RevealLogin_Clicked">
+                Margin  = "5"
+                Text    = "Reveal Login"
+                Clicked = "RevealLogin_Clicked">
             </Button>
             <Button
-                VerticalOptions   = "End"
-                HorizontalOptions = "Center"
-                Text              = "Hide Login"
-                Clicked           = "HideLogin_Clicked">
+                Margin  = "5"
+                Text    = "Hide Login"
+                Clicked = "HideLogin_Clicked">
             </Button>
             <Button
-                VerticalOptions   = "End"
-                HorizontalOptions = "Center"
-                Text              = "Reveal Register"
-                Clicked           = "RevealRegister_Clicked">
+                Margin  = "5"
+                Text    = "Reveal Register"
+                Clicked = "RevealRegister_Clicked">
             </Button>
             <Button
-                VerticalOptions   = "End"
-                HorizontalOptions = "Center"
-                Text              = "Hide Register"
-                Clicked           = "HideRegister_Clicked">
+                Margin  = "5"
+                Text    = "Hide Register"
+                Clicked = "HideRegister_Clicked">
             </Button>
         </FlexLayout>
     </Grid>

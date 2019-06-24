@@ -2,14 +2,14 @@
 using System.ComponentModel;
 using Xamarin.Forms;
 
-namespace FormsRevealer.Sample
+namespace FormsRevealer.Sample.Pages
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
-    public partial class MainPage : ContentPage
+    public partial class LoginRegisterReveal : ContentPage
     {
-        public MainPage()
+        public LoginRegisterReveal()
         {
             InitializeComponent();
         }
@@ -31,7 +31,7 @@ namespace FormsRevealer.Sample
 
         void HideRegister_Clicked(object sender, EventArgs e)
         {
-            RegisterRevealer.StartRevealAnimation();
+            RegisterRevealer.StartHidingAnimation();
         }
 
     }

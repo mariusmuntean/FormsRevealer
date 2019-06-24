@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns               = "http://xamarin.com/schemas/2014/forms"
+    xmlns:x              = "http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios            = "clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:lib            = "clr-namespace:FormsRevealer.Sample.lib;assembly=FormsRevealer.Sample"
+    ios:Page.UseSafeArea = "true"
+    Title                = "Huge"
+    x:Class              = "FormsRevealer.Sample.Pages.HugeReveal">
+    <Grid
+        BackgroundColor = "#FF353535">
+        <Label
+            Text              = "CLICK REVEAL"
+            TextColor         = "#FFCCCCCC"
+            FontAttributes    = "Bold"
+            FontSize          = "Large"
+            HorizontalOptions = "Center"
+            Margin            = "15">
+        </Label>
+        <lib:ViewRevealer
+            x:Name = "Revealer">
+            <lib:ViewRevealer.ChildView>
+                <Grid
+                    BackgroundColor = "DodgerBlue">
+                    <Label
+                        Text              = "Hi THERE"
+                        TextColor         = "#FFCCCCCC"
+                        FontAttributes    = "Bold"
+                        FontSize          = "Large"
+                        HorizontalOptions = "Center"
+                        Margin            = "15">
+                    </Label>
+                    <StackLayout
+                        VerticalOptions = "Center">
+                        <Button
+                            BackgroundColor = "#FFDB4437"
+                            Text            = "Button One">
+                        </Button>
+                        <Button
+                            BackgroundColor = "#FFF4B400"
+                            Text            = "Button Two">
+                        </Button>
+                        <Button
+                            BackgroundColor = "#FF0F9D58"
+                            Text            = "Button Three">
+                        </Button>
+                    </StackLayout>
+                </Grid>
+            </lib:ViewRevealer.ChildView>
+        </lib:ViewRevealer>
+        <!-- button -->
+        <Grid
+            VerticalOptions   = "End"
+            HorizontalOptions = "End"
+            HeightRequest     = "50"
+            WidthRequest      = "50"
+            Margin            = "25"
+            Padding           = "0">
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer
+                    Tapped = "Handle_Clicked">
+                </TapGestureRecognizer>
+            </Grid.GestureRecognizers>
+            <Frame
+                x:Name       = "btn"
+                BackgroundColor="DodgerBlue"
+                CornerRadius = "25"
+                Margin       = "0"
+                Padding      = "0">
+                <Label
+                    VerticalOptions   = "Center"
+                    HorizontalOptions = "Center"
+                    Margin            = "0"
+                    Text              = "+"
+                    FontAttributes    = "Bold"
+                    FontSize          = "Large">
+                </Label>
+            </Frame>
+        </Grid>
+    </Grid>
+</ContentPage>
