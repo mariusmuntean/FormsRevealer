@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace FormsRevealer.Sample
@@ -18,9 +14,25 @@ namespace FormsRevealer.Sample
             InitializeComponent();
         }
 
-        void Handle_Clicked(object sender, System.EventArgs e)
+        void RevealLogin_Clicked(object sender, EventArgs e)
         {
-            Revealer.StartRevealAnimation();
+            LoginRevealer.StartRevealAnimation();
         }
+
+        void HideLogin_Clicked(object sender, EventArgs e)
+        {
+            LoginRevealer.StartHidingAnimation();
+        }
+
+        void RevealRegister_Clicked(object sender, EventArgs e)
+        {
+            RegisterRevealer.StartRevealAnimation();
+        }
+
+        void HideRegister_Clicked(object sender, EventArgs e)
+        {
+            RegisterRevealer.StartRevealAnimation();
+        }
+
     }
 }

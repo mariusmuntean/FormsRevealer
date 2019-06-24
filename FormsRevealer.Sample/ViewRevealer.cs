@@ -15,6 +15,8 @@ namespace FormsRevealer.Sample
         SKCanvasView _canvasView;
         private float _revealProgress;
 
+        private RevealState _state;
+
         public ViewRevealer()
         {
             // dependency service that creates a bitmap from a XF.View:
@@ -28,6 +30,7 @@ namespace FormsRevealer.Sample
             // when done hide the canvas and show the childView
 
             this.BackgroundColor = Color.Transparent;
+            _state = RevealState.Hidden;
         }
 
         public static readonly BindableProperty ChildViewProperty = BindableProperty.Create(
@@ -40,7 +43,7 @@ namespace FormsRevealer.Sample
 
         private static void OnChildViewChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            if(bindable is ViewRevealer revealer)
+            if (bindable is ViewRevealer revealer)
             {
                 //revealer.HorizontalOptions = revealer.ChildView.HorizontalOptions;
                 //revealer.VerticalOptions = revealer.ChildView.VerticalOptions;
@@ -78,6 +81,8 @@ namespace FormsRevealer.Sample
 
         public void StartRevealAnimation()
         {
+            _state = RevealState.Revealing;
+
             ChildView.Opacity = 0.0;
 
             //_childViewImage = _childViewImage ?? GetChildViewImage();
@@ -95,7 +100,34 @@ namespace FormsRevealer.Sample
 
             revealAnimation.Commit(this, "RevealAnimation", length: 900, finished: (d, b) =>
             {
+                _state = RevealState.Revealed;
                 ChildView.Opacity = 1.0;
+                _rootLayout.Children.Remove(_canvasView);
+            });
+        }
+
+        public void StartHidingAnimation()
+        {
+            _state = RevealState.Hiding;
+
+            _childViewImage = GetChildViewImage();
+            _rootLayout.Children.Add(_canvasView);
+            ChildView.Opacity = 0.0;
+
+            var hideAnimation = new Animation(
+                interpolatedValue =>
+                {
+                    _revealProgress = (float)interpolatedValue;
+                    _canvasView.InvalidateSurface();
+                },
+                start: 1.0,
+                end: 0.0,
+                easing: Easing.CubicInOut
+                );
+
+            hideAnimation.Commit(this, "HideAnimation", length: 900, finished: (d, b) =>
+            {
+                _state = RevealState.Hidden;
                 _rootLayout.Children.Remove(_canvasView);
             });
         }
@@ -138,5 +170,14 @@ namespace FormsRevealer.Sample
         }
 
     }
+
+    public enum RevealState
+    {
+        Hidden,
+        Revealing,
+        Hiding,
+        Revealed
+    }
+
 }
 

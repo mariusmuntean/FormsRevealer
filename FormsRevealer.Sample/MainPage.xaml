@@ -18,12 +18,12 @@
             <RowDefinition
                 Height = "*" />
             <RowDefinition
-                Height = "Auto" />
+                Height = "90" />
         </Grid.RowDefinitions>
-        <!-- revealer -->
+        <!-- revealers -->
+        <!-- login -->
         <local:ViewRevealer
-            x:Name            = "Revealer"
-            BackgroundColor   = "#FFDDDDDD"
+            x:Name            = "LoginRevealer"
             HorizontalOptions = "Fill"
             VerticalOptions   = "Center">
             <local:ViewRevealer.ChildView>
@@ -32,12 +32,51 @@
                 </views:LoginView>
             </local:ViewRevealer.ChildView>
         </local:ViewRevealer>
-        <Button
+        <!-- register -->
+        <local:ViewRevealer
+            x:Name            = "RegisterRevealer"
+            HorizontalOptions = "Fill"
+            VerticalOptions   = "Center">
+            <local:ViewRevealer.ChildView>
+                <views:RegisterView
+                    VerticalOptions = "Fill">
+                </views:RegisterView>
+            </local:ViewRevealer.ChildView>
+        </local:ViewRevealer>
+        <FlexLayout
+            BackgroundColor   = "Transparent"
+            AlignContent      = "End"
             Grid.Row          = "1"
+            Direction         = "Row"
+            AlignItems        = "Center"
+            Wrap              = "Wrap"
             VerticalOptions   = "End"
-            HorizontalOptions = "Center"
-            Text              = "Reveal"
-            Clicked           = "Handle_Clicked">
-        </Button>
+            JustifyContent    = "SpaceBetween"
+            HorizontalOptions = "Center">
+            <Button
+                VerticalOptions   = "End"
+                HorizontalOptions = "Center"
+                Text              = "Reveal Login"
+                Clicked           = "RevealLogin_Clicked">
+            </Button>
+            <Button
+                VerticalOptions   = "End"
+                HorizontalOptions = "Center"
+                Text              = "Hide Login"
+                Clicked           = "HideLogin_Clicked">
+            </Button>
+            <Button
+                VerticalOptions   = "End"
+                HorizontalOptions = "Center"
+                Text              = "Reveal Register"
+                Clicked           = "RevealRegister_Clicked">
+            </Button>
+            <Button
+                VerticalOptions   = "End"
+                HorizontalOptions = "Center"
+                Text              = "Hide Register"
+                Clicked           = "HideRegister_Clicked">
+            </Button>
+        </FlexLayout>
     </Grid>
 </ContentPage>

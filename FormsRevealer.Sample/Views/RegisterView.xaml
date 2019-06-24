@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView
+    xmlns  = "http://xamarin.com/schemas/2014/forms"
+    xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class = "FormsRevealer.Sample.Views.RegisterView">
+    <Frame
+        HasShadow       = "true"
+        BackgroundColor = "Gold"
+        VerticalOptions = "Center">
+        <StackLayout
+            VerticalOptions = "Center">
+            <Entry
+                Margin      = "5"
+                Placeholder = "User name">
+            </Entry>
+            <Entry
+                Margin      = "5"
+                Placeholder = "Password">
+            </Entry>
+            <Entry
+                Margin      = "5"
+                Placeholder = "Password">
+            </Entry>
+            <Button
+                Margin = "10"
+                Text   = "REGISTER">
+            </Button>
+        </StackLayout>
+    </Frame>
+</ContentView>
