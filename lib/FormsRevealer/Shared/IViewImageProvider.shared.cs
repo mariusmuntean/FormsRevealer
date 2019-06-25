@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace FormsRevealer.Sample.lib
+namespace FormsRevealer.Shared
 {
     public interface IViewImageProvider
     {

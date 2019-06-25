@@ -1,14 +1,16 @@
 ﻿using System;
-using System.IO;
-using FormsRevealer.Sample.iOS;
-using FormsRevealer.Sample.lib;
+using FormsRevealer.Platforms.iOS;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
+using FormsRevealer.Shared;
 
 [assembly: Dependency(typeof(ViewImageProvider))]
-namespace FormsRevealer.Sample.iOS
+namespace FormsRevealer.Platforms.iOS
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ViewImageProvider : IViewImageProvider
     {
         public byte[] GetViewImage(View formsView)

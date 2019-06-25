@@ -5,7 +5,7 @@ using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
 
-namespace FormsRevealer.Sample.lib
+namespace FormsRevealer.Shared
 {
     [DesignTimeVisible(true)]
     public class ViewRevealer : ContentView
@@ -34,15 +34,21 @@ namespace FormsRevealer.Sample.lib
 
 
             //ToDo: make input transparent while NOT Revealed
+
+#if XAMARIN_ANDROID
+            Console.WriteLine("Android");
+#elif __IOS__
+            Console.WriteLine("iOS");
+#endif
         }
 
         public static readonly BindableProperty ChildViewProperty = BindableProperty.Create(
             nameof(ChildView),
             typeof(View),
             typeof(ViewRevealer),
-            new Label() { Text = "Set some content :D", VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center },
+            new Label() {Text = "Set some content :D", VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center},
             propertyChanged: OnChildViewChanged
-            );
+        );
 
         private static void OnChildViewChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -61,7 +67,7 @@ namespace FormsRevealer.Sample.lib
 
         public View ChildView
         {
-            get => (View)GetValue(ChildViewProperty);
+            get => (View) GetValue(ChildViewProperty);
             set => SetValue(ChildViewProperty, value);
         }
 
@@ -95,11 +101,11 @@ namespace FormsRevealer.Sample.lib
             var revealAnimation = new Animation(
                 interpolatedValue =>
                 {
-                    _revealProgress = (float)interpolatedValue;
+                    _revealProgress = (float) interpolatedValue;
                     _canvasView.InvalidateSurface();
                 },
                 easing: Easing.CubicInOut
-                );
+            );
 
             revealAnimation.Commit(this, "RevealAnimation", length: 900, finished: (d, b) =>
             {
@@ -120,13 +126,13 @@ namespace FormsRevealer.Sample.lib
             var hideAnimation = new Animation(
                 interpolatedValue =>
                 {
-                    _revealProgress = (float)interpolatedValue;
+                    _revealProgress = (float) interpolatedValue;
                     _canvasView.InvalidateSurface();
                 },
                 start: 1.0,
                 end: 0.0,
                 easing: Easing.CubicInOut
-                );
+            );
 
             hideAnimation.Commit(this, "HideAnimation", length: 900, finished: (d, b) =>
             {
@@ -145,7 +151,7 @@ namespace FormsRevealer.Sample.lib
 
             var clippingPath = new SKPath();
             var hypotenuse = Math.Sqrt(Math.Pow(info.Width, 2) + Math.Pow(info.Height, 2));
-            var radius = (float)(_revealProgress * hypotenuse);
+            var radius = (float) (_revealProgress * hypotenuse);
             clippingPath.AddCircle(info.Width, info.Height, radius);
 
             canvas.ClipPath(clippingPath);
@@ -155,7 +161,6 @@ namespace FormsRevealer.Sample.lib
 
         private SKBitmap GetChildViewImage()
         {
-
             var r = DependencyService.Get<IViewImageProvider>(DependencyFetchTarget.GlobalInstance).GetViewImage(ChildView);
             SKCodec codec = SKCodec.Create(new MemoryStream(r));
             return SKBitmap.Decode(codec);
@@ -171,7 +176,6 @@ namespace FormsRevealer.Sample.lib
 
             //return resourceBitmap;
         }
-
     }
 
     public enum RevealState
@@ -181,6 +185,4 @@ namespace FormsRevealer.Sample.lib
         Hiding,
         Revealed
     }
-
 }
-

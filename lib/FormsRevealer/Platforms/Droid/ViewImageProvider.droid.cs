@@ -1,14 +1,16 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using Android.Graphics;
-using FormsRevealer.Sample.Droid;
-using FormsRevealer.Sample.lib;
+using FormsRevealer.Platforms.Droid;
+using FormsRevealer.Shared;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
 [assembly: Dependency(typeof(ViewImageProvider))]
-namespace FormsRevealer.Sample.Droid
+namespace FormsRevealer.Platforms.Droid
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ViewImageProvider : IViewImageProvider
     {
         public byte[] GetViewImage(View formsView)

@@ -9,7 +9,7 @@
         <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Xamarin.Forms" Version="4.0.0.497661" />
+        <PackageReference Include="Xamarin.Forms" Version="3.6.0.344457" />
         <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
         <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.0" />
     </ItemGroup>
@@ -30,5 +30,8 @@
             <DependentUpon>LoginRegisterReveal.xaml</DependentUpon>
             <SubType>Code</SubType>
         </Compile>
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\lib\FormsRevealer\FormsRevealer.csproj" />
     </ItemGroup>
 </Project>

@@ -25,7 +25,7 @@ namespace FormsRevealer.Sample.Pages
             _revealing = !_revealing;
 
 
-            btn.RotateTo(1080, length: 600, easing: Easing.CubicOut).ContinueWith(t => btn.Rotation = 0.0);
+            await btn.RotateTo(1080, length: 600, easing: Easing.CubicOut).ContinueWith(t => btn.Rotation = 0.0);
             btn.Animate("OpacityAnimation", d =>
             {
                 if (d < 0.5)

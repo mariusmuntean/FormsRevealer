@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormsRevealer.Sample.iOS", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormsRevealer.Sample", "FormsRevealer.Sample\FormsRevealer.Sample.csproj", "{B2877753-AA0C-403D-B4D9-1542006E62DF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{1E4170F9-8EF6-4497-B850-E94827A793AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormsRevealer", "lib\FormsRevealer\FormsRevealer.csproj", "{3A183041-F15B-4D5D-BD3E-C4BFF20BFBD9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,5 +57,20 @@ Global
 		{B2877753-AA0C-403D-B4D9-1542006E62DF}.Debug|iPhone.Build.0 = Debug|Any CPU
 		{B2877753-AA0C-403D-B4D9-1542006E62DF}.Release|iPhone.ActiveCfg = Release|Any CPU
 		{B2877753-AA0C-403D-B4D9-1542006E62DF}.Release|iPhone.Build.0 = Release|Any CPU
+		{3A183041-F15B-4D5D-BD3E-C4BFF20BFBD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A183041-F15B-4D5D-BD3E-C4BFF20BFBD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A183041-F15B-4D5D-BD3E-C4BFF20BFBD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A183041-F15B-4D5D-BD3E-C4BFF20BFBD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A183041-F15B-4D5D-BD3E-C4BFF20BFBD9}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{3A183041-F15B-4D5D-BD3E-C4BFF20BFBD9}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{3A183041-F15B-4D5D-BD3E-C4BFF20BFBD9}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{3A183041-F15B-4D5D-BD3E-C4BFF20BFBD9}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{3A183041-F15B-4D5D-BD3E-C4BFF20BFBD9}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{3A183041-F15B-4D5D-BD3E-C4BFF20BFBD9}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{3A183041-F15B-4D5D-BD3E-C4BFF20BFBD9}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{3A183041-F15B-4D5D-BD3E-C4BFF20BFBD9}.Release|iPhone.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3A183041-F15B-4D5D-BD3E-C4BFF20BFBD9} = {1E4170F9-8EF6-4497-B850-E94827A793AE}
 	EndGlobalSection
 EndGlobal
