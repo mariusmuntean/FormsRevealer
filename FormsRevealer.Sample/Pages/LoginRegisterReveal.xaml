@@ -1,75 +1,85 @@
-﻿<?xml
-    version = "1.0"
-    encoding = "utf-8" ?>
-
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:views="clr-namespace:FormsRevealer.Sample.Views;assembly=FormsRevealer.Sample"
-    mc:Ignorable="d"
-    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:shared="clr-namespace:FormsRevealer.Shared;assembly=FormsRevealer"
-    ios:Page.UseSafeArea="true"
-    Title="Login Register"
-    x:Class="FormsRevealer.Sample.Pages.LoginRegisterReveal">
+    xmlns               = "http://xamarin.com/schemas/2014/forms"
+    xmlns:x              = "http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d              = "http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc             = "http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views          = "clr-namespace:FormsRevealer.Sample.Views;assembly=FormsRevealer.Sample"
+    mc:Ignorable         = "d"
+    xmlns:ios            = "clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:shared         = "clr-namespace:FormsRevealer.Shared;assembly=FormsRevealer"
+    ios:Page.UseSafeArea = "true"
+    Title                = "Login Register"
+    x:Class              = "FormsRevealer.Sample.Pages.LoginRegisterReveal">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style
+                TargetType = "Button">
+                <Setter
+                    Property = "Margin"
+                    Value    = "5" />
+                <Setter
+                    Property = "Padding"
+                    Value    = "5" />
+                <Setter
+                    Property = "TextColor"
+                    Value    = "White" />
+                <Setter
+                    Property = "BackgroundColor"
+                    Value    = "Gray" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <Grid
-        Margin="10"
-        Padding="10">
+        Margin  = "10"
+        Padding = "10">
         <Grid.RowDefinitions>
             <RowDefinition
-                Height="*" />
+                Height = "*" />
             <RowDefinition
-                Height="100" />
+                Height = "110" />
         </Grid.RowDefinitions>
         <!-- revealers -->
         <!-- login -->
         <shared:ViewRevealer
-            x:Name="LoginRevealer"
-            HorizontalOptions="Fill"
-            VerticalOptions="Center">
+            x:Name            = "LoginRevealer"
+            HorizontalOptions = "Fill"
+            VerticalOptions   = "Center">
             <shared:ViewRevealer.ChildView>
                 <views:LoginView
-                    VerticalOptions="Fill" />
+                    VerticalOptions = "Fill" />
             </shared:ViewRevealer.ChildView>
         </shared:ViewRevealer>
         <!-- register -->
         <shared:ViewRevealer
-            Grid.Row="0" 
-            x:Name="RegisterRevealer"
-            HorizontalOptions="Fill"
-            VerticalOptions="Center">
+            Grid.Row          = "0"
+            x:Name            = "RegisterRevealer"
+            HorizontalOptions = "Fill"
+            VerticalOptions   = "Center">
             <shared:ViewRevealer.ChildView>
                 <views:RegisterView
-                    VerticalOptions="Fill" />
+                    VerticalOptions = "Fill" />
             </shared:ViewRevealer.ChildView>
         </shared:ViewRevealer>
         <FlexLayout
-            AlignContent="Center"
-            Grid.Row="1"
-            Direction="Column"
-            AlignItems="Center"
-            Wrap="Wrap"
-            VerticalOptions="CenterAndExpand"
-            JustifyContent="SpaceEvenly"
-            HorizontalOptions="CenterAndExpand">
+            AlignContent   = "Center"
+            Grid.Row       = "1"
+            Direction      = "Column"
+            AlignItems     = "Center"
+            Wrap           = "Wrap"
+            JustifyContent = "SpaceEvenly">
             <Button
-                Margin="5"
-                Text="Reveal Login"
-                Clicked="RevealLogin_Clicked" />
+                Text    = "Reveal Login"
+                Clicked = "RevealLogin_Clicked" />
             <Button
-                Margin="5"
-                Text="Hide Login"
-                Clicked="HideLogin_Clicked" />
+                Text    = "Hide Login"
+                Clicked = "HideLogin_Clicked" />
             <Button
-                Margin="5"
-                Text="Reveal Register"
-                Clicked="RevealRegister_Clicked" />
+                Text    = "Reveal Register"
+                Clicked = "RevealRegister_Clicked" />
             <Button
-                Margin="5"
-                Text="Hide Register"
-                Clicked="HideRegister_Clicked" />
+                Text    = "Hide Register"
+                Clicked = "HideRegister_Clicked" />
         </FlexLayout>
     </Grid>
 </ContentPage>
