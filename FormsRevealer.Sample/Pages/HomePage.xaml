@@ -5,7 +5,27 @@
     x:Class = "FormsRevealer.Sample.Pages.HomePage">
     <FlexLayout
         Direction      = "Column"
-        JustifyContent = "Center">
+        JustifyContent = "SpaceEvenly"
+        AlignItems     = "Center"
+        Padding        = "20,0">
+        <Label
+            Text      = "FormsRevealer Sample App."
+            MaxLines  = "10"
+            FontSize  = "Large"
+            TextColor = "#FFCACACA">
+        </Label>
+        <Label
+            Text      = "The Login Register page shows the default behaviour of the revealer and how to use another Easing function"
+            TextColor = "#FFDDDDDD">
+        </Label>
+        <Label
+            Text      = "The Huge Reveal page shows how to reaveal and hide a large layout"
+            TextColor = "#FFDDDDDD">
+        </Label>
+        <Label
+            Text      = "The Central Reveal page shows how to use different reveal anchors to obtain a reveal animation from the center of the child control"
+            TextColor = "#FFDDDDDD">
+        </Label>
         <Button
             Text    = "Login Register"
             Clicked = "LoginRegisterClicked">
@@ -13,6 +33,10 @@
         <Button
             Text    = "Huge Reveal"
             Clicked = "HugeRevealClicked">
+        </Button>
+        <Button
+            Text    = "Central Reveal"
+            Clicked = "CentralRevealClicked">
         </Button>
     </FlexLayout>
 </ContentPage>

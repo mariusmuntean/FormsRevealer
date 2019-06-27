@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns          = "http://xamarin.com/schemas/2014/forms"
+    xmlns:x         = "http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios       = "clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:shared    = "clr-namespace:FormsRevealer.Shared;assembly=FormsRevealer"
+    x:Class         = "FormsRevealer.Sample.Pages.CentralReveal"
+    BackgroundColor = "#FFEEEEEE"
+    Title           = "Central Reveal">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:String
+                x:Key = "Expand">ﺳ</x:String>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <shared:ViewRevealer
+            Margin            = "20"
+            HorizontalOptions = "Center"
+            x:Name            = "CentralRevealer">
+            <shared:ViewRevealer.HorizontalRevealAnchor>
+                <x:Single>0.5</x:Single>
+            </shared:ViewRevealer.HorizontalRevealAnchor>
+            <shared:ViewRevealer.VerticalRevealAnchor>
+                <x:Single>0.5</x:Single>
+            </shared:ViewRevealer.VerticalRevealAnchor>
+            <shared:ViewRevealer.ChildView>
+                <Frame
+                    Margin            = "0"
+                    CornerRadius      = "15"
+                    Padding           = "0"
+                    IsClippedToBounds = "true"
+                    HasShadow         = "true">
+                    <FlexLayout
+                        Direction      = "Row"
+                        JustifyContent = "Center"
+                        AlignItems     = "Stretch"
+                        Wrap           = "Wrap">
+                        <BoxView
+                            FlexLayout.Grow = "1"
+                            BackgroundColor = "#7fe7cc">
+                        </BoxView>
+                        <BoxView
+                            FlexLayout.Grow = "1"
+                            BackgroundColor = "#dfe38e">
+                        </BoxView>
+                        <BoxView
+                            FlexLayout.Grow = "1"
+                            BackgroundColor = "#efca8c">
+                        </BoxView>
+                        <BoxView
+                            FlexLayout.Grow = "1"
+                            BackgroundColor = "#FF606060">
+                        </BoxView>
+                        <BoxView
+                            FlexLayout.Grow = "1"
+                            BackgroundColor = "Gold">
+                        </BoxView>
+                        <BoxView
+                            FlexLayout.Grow = "1"
+                            BackgroundColor = "#f17e7e">
+                        </BoxView>
+                    </FlexLayout>
+                </Frame>
+            </shared:ViewRevealer.ChildView>
+        </shared:ViewRevealer>
+        <!-- button -->
+        <Grid
+            VerticalOptions   = "End"
+            HorizontalOptions = "End"
+            HeightRequest     = "50"
+            WidthRequest      = "50"
+            Margin            = "25"
+            Padding           = "0">
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer
+                    Tapped = "Handle_Tapped" />
+            </Grid.GestureRecognizers>
+            <Frame
+                x:Name          = "btn"
+                BackgroundColor = "DodgerBlue"
+                CornerRadius    = "25"
+                Margin          = "0"
+                Padding         = "0">
+                <Image
+                    HeightRequest     = "30"
+                    Aspect            = "AspectFit"
+                    Margin            = "0"
+                    HorizontalOptions = "Center"
+                    VerticalOptions   = "Center">
+                    <Image.Source>
+                        <FontImageSource
+                            FontFamily = "{DynamicResource MaterialFontFamily}"
+                            Glyph      = "{StaticResource Expand}"
+                            Size       = "44"
+                            Color      = "White" />
+                    </Image.Source>
+                </Image>
+            </Frame>
+        </Grid>
+    </Grid>
+</ContentPage>

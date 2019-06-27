@@ -4,11 +4,13 @@ using System.IO;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace FormsRevealer.Shared
 {
+    [Preserve(AllMembers = true)]
     [DesignTimeVisible(true)]
-    public class ViewRevealer : ContentView
+    public partial class ViewRevealer : ContentView
     {
         Grid _rootLayout;
         SKBitmap _childViewImage;
@@ -31,44 +33,7 @@ namespace FormsRevealer.Shared
 
             this.BackgroundColor = Color.Transparent;
             _state = RevealState.Hidden;
-
-
-            //ToDo: make input transparent while NOT Revealed
-
-#if XAMARIN_ANDROID
-            Console.WriteLine("Android");
-#elif __IOS__
-            Console.WriteLine("iOS");
-#endif
-        }
-
-        public static readonly BindableProperty ChildViewProperty = BindableProperty.Create(
-            nameof(ChildView),
-            typeof(View),
-            typeof(ViewRevealer),
-            new Label() {Text = "Set some content :D", VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center},
-            propertyChanged: OnChildViewChanged
-        );
-
-        private static void OnChildViewChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (bindable is ViewRevealer revealer)
-            {
-                //revealer.HorizontalOptions = revealer.ChildView.HorizontalOptions;
-                //revealer.VerticalOptions = revealer.ChildView.VerticalOptions;
-
-                revealer.WidthRequest = revealer.ChildView.WidthRequest;
-                revealer.HeightRequest = revealer.ChildView.HeightRequest;
-
-                revealer.MinimumWidthRequest = revealer.ChildView.MinimumWidthRequest;
-                revealer.MinimumHeightRequest = revealer.ChildView.MinimumHeightRequest;
-            }
-        }
-
-        public View ChildView
-        {
-            get => (View) GetValue(ChildViewProperty);
-            set => SetValue(ChildViewProperty, value);
+            //ToDo: make InputTransparent while NOT Revealed
         }
 
         protected override void OnParentSet()
@@ -101,13 +66,13 @@ namespace FormsRevealer.Shared
             var revealAnimation = new Animation(
                 interpolatedValue =>
                 {
-                    _revealProgress = (float) interpolatedValue;
+                    _revealProgress = (float)interpolatedValue;
                     _canvasView.InvalidateSurface();
                 },
-                easing: Easing.CubicInOut
+                easing: RevealEasing
             );
 
-            revealAnimation.Commit(this, "RevealAnimation", length: 900, finished: (d, b) =>
+            revealAnimation.Commit(this, "RevealAnimation", length: Convert.ToUInt32(RevealDurationMillis), finished: (d, b) =>
             {
                 _state = RevealState.Revealed;
                 ChildView.Opacity = 1.0;
@@ -126,15 +91,15 @@ namespace FormsRevealer.Shared
             var hideAnimation = new Animation(
                 interpolatedValue =>
                 {
-                    _revealProgress = (float) interpolatedValue;
+                    _revealProgress = (float)interpolatedValue;
                     _canvasView.InvalidateSurface();
                 },
                 start: 1.0,
                 end: 0.0,
-                easing: Easing.CubicInOut
+                easing: RevealEasing
             );
 
-            hideAnimation.Commit(this, "HideAnimation", length: 900, finished: (d, b) =>
+            hideAnimation.Commit(this, "HideAnimation", length: Convert.ToUInt32(RevealDurationMillis), finished: (d, b) =>
             {
                 _state = RevealState.Hidden;
                 _rootLayout.Children.Remove(_canvasView);
@@ -151,8 +116,10 @@ namespace FormsRevealer.Shared
 
             var clippingPath = new SKPath();
             var hypotenuse = Math.Sqrt(Math.Pow(info.Width, 2) + Math.Pow(info.Height, 2));
-            var radius = (float) (_revealProgress * hypotenuse);
-            clippingPath.AddCircle(info.Width, info.Height, radius);
+            var radius = (float)(_revealProgress * hypotenuse);
+            clippingPath.AddCircle(info.Width * HorizontalRevealAnchor,
+                                    info.Height * VerticalRevealAnchor,
+                                    radius);
 
             canvas.ClipPath(clippingPath);
 

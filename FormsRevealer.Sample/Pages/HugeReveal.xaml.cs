@@ -10,7 +10,7 @@ namespace FormsRevealer.Sample.Pages
             InitializeComponent();
         }
 
-        async void Handle_Clicked(object sender, System.EventArgs e)
+        void Handle_Clicked(object sender, System.EventArgs e)
         {
             if (_revealing)
             {
@@ -25,7 +25,10 @@ namespace FormsRevealer.Sample.Pages
             _revealing = !_revealing;
 
 
-            await btn.RotateTo(1080, length: 600, easing: Easing.CubicOut).ContinueWith(t => btn.Rotation = 0.0);
+            _ = btn.RotateTo(720, length: 850, easing: Easing.CubicOut)
+                .ContinueWith(t => btn.Rotation = 0.0);
+                //.ContinueWith(t => LabelRevealer.StartRevealAnimation());
+
             btn.Animate("OpacityAnimation", d =>
             {
                 if (d < 0.5)

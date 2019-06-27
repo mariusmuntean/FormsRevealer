@@ -138,4 +138,7 @@
       <Name>FormsRevealer</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\materialdesignicons-webfont.ttf" />
+  </ItemGroup>
 </Project>

@@ -7,5 +7,20 @@
     mc:Ignorable = "d"
     x:Class      = "FormsRevealer.Sample.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <OnPlatform
+                x:Key           = "MaterialFontFamily"
+                x:TypeArguments = "x:String">
+                <On
+                    Platform = "iOS"
+                    Value    = "Material Design Icons" />
+                <On
+                    Platform = "Android"
+                    Value    = "materialdesignicons-webfont.ttf#Material Design Icons" />
+                <On
+                    Platform = "UWP"
+                    Value    = "Assets/Fonts/materialdesignicons-webfont.ttf#Material Design Icons" />
+            </OnPlatform>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

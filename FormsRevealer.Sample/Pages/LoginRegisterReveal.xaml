@@ -42,9 +42,10 @@
         <!-- revealers -->
         <!-- login -->
         <shared:ViewRevealer
-            x:Name            = "LoginRevealer"
-            HorizontalOptions = "Fill"
-            VerticalOptions   = "Center">
+            x:Name               = "LoginRevealer"
+            HorizontalOptions    = "Fill"
+            VerticalOptions      = "Center"
+            RevealDurationMillis = "450">
             <shared:ViewRevealer.ChildView>
                 <views:LoginView
                     VerticalOptions = "Fill" />
@@ -55,7 +56,8 @@
             Grid.Row          = "0"
             x:Name            = "RegisterRevealer"
             HorizontalOptions = "Fill"
-            VerticalOptions   = "Center">
+            VerticalOptions   = "Center"
+            RevealEasing="{x:Static Easing.BounceOut}">
             <shared:ViewRevealer.ChildView>
                 <views:RegisterView
                     VerticalOptions = "Fill" />

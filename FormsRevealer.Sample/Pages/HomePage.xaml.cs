@@ -18,5 +18,10 @@ namespace FormsRevealer.Sample.Pages
         {
             await Navigation.PushAsync(new HugeReveal(), true);
         }
+
+        async void CentralRevealClicked(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new CentralReveal(), true);
+        }
     }
 }
