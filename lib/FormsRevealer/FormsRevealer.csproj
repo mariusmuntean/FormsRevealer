@@ -17,17 +17,17 @@
         <PackageId>FormsRevealer</PackageId>
         <PackageVersion>0.1.0.0</PackageVersion>
 
-        <PackageReleaseNotes>RELEASE NOTES</PackageReleaseNotes>
-        <PackageTags>xamarin.forms, skiasharp, iOS, Android</PackageTags>
+        <PackageReleaseNotes>First release. Check out the GitHub page for info and a sample project: https://github.com/mariusmuntean/FormsRevealer</PackageReleaseNotes>
+        <PackageTags>xamarin.forms, skiasharp, custom-control, animation, reveal, iOS, Android</PackageTags>
 
         <Title>FormsRevealer</Title>
         <Summary>Control that displays its child-view with a reveal animation</Summary>
-        <Description>Plugin Description</Description>
-
+        <Description>Control that displays its child-view with a reveal animation</Description>
         <Owners>Marius Muntean</Owners>
         <Authors>Marius Muntean</Authors>
         <Copyright>Copyright 2019</Copyright>
-
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/mariusmuntean/FormsRevealer</PackageProjectUrl>
 
         <!--Don't auto add files for me, I will tell you -->
         <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
