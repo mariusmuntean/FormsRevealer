@@ -1,42 +1,40 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml
+    version = "1.0"
+    encoding = "UTF-8" ?>
+
 <ContentPage
-    xmlns  = "http://xamarin.com/schemas/2014/forms"
-    xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class = "FormsRevealer.Sample.Pages.HomePage">
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="FormsRevealer.Sample.Pages.HomePage">
+
     <FlexLayout
-        Direction      = "Column"
-        JustifyContent = "SpaceEvenly"
-        AlignItems     = "Center"
-        Padding        = "20,0">
+        Direction="Column"
+        JustifyContent="SpaceEvenly"
+        AlignItems="Center"
+        Padding="20,0">
         <Label
-            Text      = "FormsRevealer Sample App."
-            MaxLines  = "10"
-            FontSize  = "Large"
-            TextColor = "#FFCACACA">
-        </Label>
+            Text="FormsRevealer Sample App"
+            MaxLines="10"
+            FontSize="Large"
+            FontAttributes="Bold"
+            TextColor="#FF717171" />
         <Label
-            Text      = "The Login Register page shows the default behaviour of the revealer and how to use another Easing function"
-            TextColor = "#FFDDDDDD">
-        </Label>
+            Text="The Login Register page shows the default behaviour of the revealer and how to use another Easing function"
+            TextColor="#FFB2B2B2" />
         <Label
-            Text      = "The Huge Reveal page shows how to reaveal and hide a large layout"
-            TextColor = "#FFDDDDDD">
-        </Label>
+            Text="The Huge Reveal page shows how to reaveal and hide a large layout"
+            TextColor="#FFB2B2B2" />
         <Label
-            Text      = "The Central Reveal page shows how to use different reveal anchors to obtain a reveal animation from the center of the child control"
-            TextColor = "#FFDDDDDD">
-        </Label>
+            Text="The Central Reveal page shows how to use different reveal anchors to obtain a reveal animation from the center of the child control"
+            TextColor="#FFB2B2B2" />
         <Button
-            Text    = "Login Register"
-            Clicked = "LoginRegisterClicked">
-        </Button>
+            Text="Login Register"
+            Clicked="LoginRegisterClicked" />
         <Button
-            Text    = "Huge Reveal"
-            Clicked = "HugeRevealClicked">
-        </Button>
+            Text="Huge Reveal"
+            Clicked="HugeRevealClicked" />
         <Button
-            Text    = "Central Reveal"
-            Clicked = "CentralRevealClicked">
-        </Button>
+            Text="Central Reveal"
+            Clicked="CentralRevealClicked" />
     </FlexLayout>
 </ContentPage>

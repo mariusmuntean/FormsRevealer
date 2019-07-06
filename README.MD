@@ -8,7 +8,9 @@ Here's a quick rundown of the control's features:
 * Reveal and hide the child view.
 * Adjust the duration of the reveal and hiding animation. Around 900 milliseconds is the default.
 * Use any Easing that Xamarin.Forms supports. CubicInOut is the default.
-* Choose custom anchor points for the animation. They are similar to Xamarin.Forms' AnchorX and AnchorY concepts. The default is 1.0 and 1.0, i.e. the lower right corner of the child view.
+* Choose custom anchor points for the animation. They are similar to Xamarin.Forms' AnchorX and AnchorY concepts. The default is 1.0 and 1.0, i.e. the lower right corner of the child view. The Central Reveal page uses 0.5 and 0.5.
+* Control the revealing or hiding through the ShouldReveal BindableProperty. Use Two-way binding to get notified if the reveal state change. See the Login Register Page.
+* Get information about the current state of the reveal animation through the CurrentRevealState BindableProperty. It has the values Revealing, Revealed, Hiding and Hidden. See the Huge Reveal page.
 
 Here's a gif of the included sample app:
 

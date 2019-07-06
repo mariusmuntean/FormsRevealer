@@ -16,23 +16,11 @@ namespace FormsRevealer.Shared
         SKBitmap _childViewImage;
         SKCanvasView _canvasView;
         private float _revealProgress;
-
-        private RevealState _state;
-
+        
         public ViewRevealer()
         {
-            // dependency service that creates a bitmap from a XF.View:
-            // https://forums.xamarin.com/discussion/75408/is-it-possible-to-create-an-image-from-a-view-in-xamarin-forms
-            // https://michaelridland.com/xamarin/creating-native-view-xamarin-forms-viewpage/
-
-            // create an SKBitmap or better with that
-
-            // reveal result in canvas
-
-            // when done hide the canvas and show the childView
-
             this.BackgroundColor = Color.Transparent;
-            _state = RevealState.Hidden;
+            CurrentRevealState = RevealState.Hidden;
             //ToDo: make InputTransparent while NOT Revealed
         }
 
@@ -55,7 +43,17 @@ namespace FormsRevealer.Shared
 
         public void StartRevealAnimation()
         {
-            _state = RevealState.Revealing;
+            ShouldReveal = true;
+        }
+
+        public void StartHidingAnimation()
+        {
+            ShouldReveal = false;
+        }
+
+        private void _StartRevealAnimation()
+        {
+            CurrentRevealState = RevealState.Revealing;
 
             ChildView.Opacity = 0.0;
 
@@ -66,7 +64,7 @@ namespace FormsRevealer.Shared
             var revealAnimation = new Animation(
                 interpolatedValue =>
                 {
-                    _revealProgress = (float)interpolatedValue;
+                    _revealProgress = (float) interpolatedValue;
                     _canvasView.InvalidateSurface();
                 },
                 easing: RevealEasing
@@ -74,15 +72,15 @@ namespace FormsRevealer.Shared
 
             revealAnimation.Commit(this, "RevealAnimation", length: Convert.ToUInt32(RevealDurationMillis), finished: (d, b) =>
             {
-                _state = RevealState.Revealed;
+                CurrentRevealState = RevealState.Revealed;
                 ChildView.Opacity = 1.0;
                 _rootLayout.Children.Remove(_canvasView);
             });
         }
 
-        public void StartHidingAnimation()
+        private void _StartHidingAnimation()
         {
-            _state = RevealState.Hiding;
+            CurrentRevealState = RevealState.Hiding;
 
             _childViewImage = GetChildViewImage();
             _rootLayout.Children.Add(_canvasView);
@@ -91,7 +89,7 @@ namespace FormsRevealer.Shared
             var hideAnimation = new Animation(
                 interpolatedValue =>
                 {
-                    _revealProgress = (float)interpolatedValue;
+                    _revealProgress = (float) interpolatedValue;
                     _canvasView.InvalidateSurface();
                 },
                 start: 1.0,
@@ -101,7 +99,7 @@ namespace FormsRevealer.Shared
 
             hideAnimation.Commit(this, "HideAnimation", length: Convert.ToUInt32(RevealDurationMillis), finished: (d, b) =>
             {
-                _state = RevealState.Hidden;
+                CurrentRevealState = RevealState.Hidden;
                 _rootLayout.Children.Remove(_canvasView);
             });
         }
@@ -116,10 +114,10 @@ namespace FormsRevealer.Shared
 
             var clippingPath = new SKPath();
             var hypotenuse = Math.Sqrt(Math.Pow(info.Width, 2) + Math.Pow(info.Height, 2));
-            var radius = (float)(_revealProgress * hypotenuse);
+            var radius = (float) (_revealProgress * hypotenuse);
             clippingPath.AddCircle(info.Width * HorizontalRevealAnchor,
-                                    info.Height * VerticalRevealAnchor,
-                                    radius);
+                info.Height * VerticalRevealAnchor,
+                radius);
 
             canvas.ClipPath(clippingPath);
 
@@ -128,28 +126,9 @@ namespace FormsRevealer.Shared
 
         private SKBitmap GetChildViewImage()
         {
-            var r = DependencyService.Get<IViewImageProvider>(DependencyFetchTarget.GlobalInstance).GetViewImage(ChildView);
-            SKCodec codec = SKCodec.Create(new MemoryStream(r));
+            var childViewImageBytes = DependencyService.Get<IViewImageProvider>(DependencyFetchTarget.GlobalInstance).GetViewImage(ChildView);
+            SKCodec codec = SKCodec.Create(new MemoryStream(childViewImageBytes));
             return SKBitmap.Decode(codec);
-
-            //string resourceID = "FormsRevealer.Sample.ape.jpg";
-            //Assembly assembly = GetType().GetTypeInfo().Assembly;
-
-            //SKBitmap resourceBitmap;
-            //using (Stream stream = assembly.GetManifestResourceStream(resourceID))
-            //{
-            //    resourceBitmap = SKBitmap.Decode(stream);
-            //}
-
-            //return resourceBitmap;
         }
-    }
-
-    public enum RevealState
-    {
-        Hidden,
-        Revealing,
-        Hiding,
-        Revealed
     }
 }

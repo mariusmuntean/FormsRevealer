@@ -51,7 +51,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.0.0.497661" />
+    <PackageReference Include="Xamarin.Forms" Version="4.1.0.555618" />
     <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Android.Support.v4" Version="28.0.0.1" />
@@ -102,7 +102,7 @@
       <Name>FormsRevealer.Sample</Name>
     </ProjectReference>
     <ProjectReference Include="..\lib\FormsRevealer\FormsRevealer.csproj">
-      <Project>{3A183041-F15B-4D5D-BD3E-C4BFF20BFBD9}</Project>
+      <Project>{82CD4F7B-E13D-4904-B44B-111E22CB1BBE}</Project>
       <Name>FormsRevealer</Name>
     </ProjectReference>
   </ItemGroup>
