@@ -69,9 +69,9 @@
         <None Include="**\*.cs;**\*.xml;**\*.axml;**\*.png" Exclude="obj\**\*.*;bin\**\*.*;bin;obj" />
 
         <!--NuGet that bring in good stuff -->
-        <PackageReference Include="MSBuild.Sdk.Extras" Version="2.0.29" PrivateAssets="All" />
+        <PackageReference Include="MSBuild.Sdk.Extras" Version="2.0.54" PrivateAssets="All" />
         <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.0" />
-        <PackageReference Include="Xamarin.Forms" Version="3.6.0.539721" />
+        <PackageReference Include="Xamarin.Forms" Version="4.3.0.991211" />
 
         <!-- We will compile anything ending in .shared.cs  You can change this -->
         <Compile Include="**\*.shared.cs" />
